@@ -1,0 +1,12 @@
+{
+  "name": "cienpalabras",
+  "app_id": "4fcf2e63",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

@@ -1,0 +1,41 @@
+<ion-view view-title="Mejores Autores">	
+  <div class="tabs-striped">
+	  <ion-tabs class="tabs-icon-left">
+	        <ion-tab title="Más Valorados" icon="ion-thumbsup">
+	            <ion-view>
+	                <ion-content >
+	                    <ion-list>
+                    	  	<ion-item class="item item-avatar item-icon-right" ng-repeat="result in results_autores | orderBy:mas_cuentos: true" href="#" href="#">
+						        <img src="{{result.img}}">
+						      	<h2>{{result.nombre}}</h2>
+						      	<p>{{result.ciudad+', '+result.pais}}</p>
+						      	<i class="icon ion-ribbon-b iconcolor-{{$index}}" ng-show="{{$index}}<3"></i>										      
+					    	</ion-item>							  
+						</ion-list>
+	                </ion-content>
+	            </ion-view>
+	        </ion-tab>
+	        <ion-tab title="Más Compartidos" icon="ion-share" >	            
+	            <ion-view >
+	                <ion-content >
+	                    <ion-list>
+                    	  	<div class="item item-avatar item-button-right" ng-repeat="result in results_autores | orderBy:most_shares: true" href="#" href="#">
+						        <img src="{{result.img}}">
+						      	<h2>{{result.nombre}}</h2>
+						      	<p>{{result.ciudad+', '+result.pais}}</p>
+						      	<div class="buttons" href="#/app/cuento">
+							        <a class="button button-clear button-dark">
+							            <i class="icon ion-share"></i>
+							            <span>{{ result.shares}}</span>
+							        </a>						        
+							    </div>										      
+					    	</div>			                    
+	                    	
+					    </ion-list>    
+	                </ion-content>
+	            </ion-view>
+	        </ion-tab>
+        
+	    </ion-tabs>
+	</div>
+</ion-view>

@@ -1,0 +1,62 @@
+
+<div class="bar bar-subheader item-input-inset">
+  <label class="item-input-wrapper">
+    <i class="icon ion-ios-search placeholder-icon"></i>
+    <input type="search" placeholder="Search">
+  </label>
+  <button class="button button-clear">
+    Cancel
+  </button>
+</div>
+<ion-view view-title="Descubre Cuentos">	
+  <div class="tabs-striped">
+	  <ion-tabs class="tabs-icon-left">
+	        <ion-tab title="Autores" icon="ion-person" >	            
+	            <ion-view >
+	                <ion-content class="has-subheader">
+	                    <ion-list>
+	                    	<ion-item class="item item-avatar" ng-repeat="result in results_autores" href="#" href="#">
+										      <img src="{{result.img}}">
+										      <h2>{{result.nombre}}</h2>
+										      <p>{{result.ciudad+', '+result.pais}}</p>										      
+										    </ion-item>	
+	                    </ion-list>    
+	                    
+	                </ion-content>
+	            </ion-view>
+	        </ion-tab>
+
+	        <ion-tab title="Cuentos" icon="ion-document-text">
+	            <ion-view>
+	                <ion-content class="has-subheader">
+	                    <ion-list>     
+											  <div class="item item-button-right"  ng-repeat="result in results_cuentos" href="#">
+											    <h2>{{result.title}}</h2>
+											    <p>{{result.autor}}</p>
+											    <div class="buttons">
+											        <button class="button button-clear">
+											            <i class="icon ion-thumbsup"></i>
+											            <span>{{ 100*(result.likes - result.dislikes)/(result.likes + result.dislikes) | number:0 }}%</span>
+											        </button>						        
+											    </div>
+											  </div>    
+											</ion-list>
+	                </ion-content>
+	            </ion-view>
+	        </ion-tab>        
+	    </ion-tabs>
+	</div>
+</ion-view>
+<!-- 
+  <div class="tabs-striped">
+    <div class="tabs tabs-icon-left">
+      <a class="tab-item active" href="#">
+        <i class="icon ion-person"></i>
+        Autores
+      </a>
+      <a class="tab-item" href="#">
+        <i class="icon ion-document-text"></i>
+        Cuentos
+      </a>      
+    </div>
+  </div> -->
