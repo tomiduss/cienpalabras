@@ -78,14 +78,24 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+  .state('app.favoritos', {
+    url: '/favoritos',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/favoritos.html',
+        controller: 'SearchCtrl'
       }
-    })
+    }
+  })
+  .state('app.user', {
+    url: '/user/:userId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/user.html',
+        controller: 'UserCtrl'
+      }
+    }
+  })
     
 
   // if none of the above states are matched, use this as the fallback

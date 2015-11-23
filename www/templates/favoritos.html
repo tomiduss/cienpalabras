@@ -1,0 +1,16 @@
+<ion-view view-title="Mejores Cuentos">		      
+    <ion-content >
+        <ion-list>     
+			  <ion-item class="item item-button-right"  ng-repeat="result in results_cuentos | orderBy:ratio_order: true" href="#/app/cuento">			    
+			    <h2>{{result.title}}</h2>
+			    <p>{{result.autor}}</p>
+			    <div class="buttons">
+			        <a class="button button-clear" href="#/app/cuento">
+			            <i class="icon ion-thumbsup"></i>
+			            <span>{{ ratio_order(result)}}%</span>
+			        </a>						        
+			    </div>
+			  </ion-item>    
+		</ion-list>
+    </ion-content>	            
+</ion-view>

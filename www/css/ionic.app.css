@@ -15,6 +15,13 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+.texto {
+  font-family: Georgia;
+  color: #000;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 1px; }
+
 /*!
   Ionicons, v2.0.1
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -9088,3 +9095,9 @@ a.button {
   opacity: 0;
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
+
+.titulo {
+  font-family: times, times-roman, georgia, serif; }
+
+.texto {
+  font-family: serif; }

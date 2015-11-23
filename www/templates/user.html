@@ -1,0 +1,29 @@
+<ion-view view-title="{{user.nombre}}">		      
+    <ion-content >
+    	<div class="row">
+    		    		
+    		
+    	</div>
+    	<div class="row">
+    	<div class="col">
+    		<p>{{user.ciudad+", "+ user.pais}}</p>
+			<p>{{user.edad}} Años</p>
+			<p>{{user.cuentos}} Cuentos</p>
+    	</div>
+    		
+    	</div>
+        <div class="row">
+    		<ion-list>
+				<ion-item class="item "  ng-repeat="result in cuentos" href="#/app/cuento">			    
+				    <h2>{{result.title}}</h2>
+				    <p>{{result.date}}</p>	    
+				    
+			    </ion-item>
+
+        	</ion-list>	    		
+    		
+    	</div>
+        		    		
+     	
+    </ion-content>	            
+</ion-view>

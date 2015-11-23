@@ -41,76 +41,11 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('PlaylistsCtrl', function($scope) {
-  $scope.playlists = [
-    { title: 'Reggae', id: 1 },
-    { title: 'Chill', id: 2 },
-    { title: 'Dubstep', id: 3 },
-    { title: 'Indie', id: 4 },
-    { title: 'Rap', id: 5 },
-    { title: 'Cowbell', id: 6 }
-  ];
-})
 
 .controller('SearchCtrl', function($scope) {
 
-  $scope.results_autores = [
-    {
-      nombre: 'Pablo Neruda',
-      ciudad: 'Isla Negra',
-      pais: 'Chile',
-      edad: '70',
-      cuentos: 45,
-      shares: 1542,
-      img: 'img/pabloneruda.png'
-    },
-    {
-      nombre: 'Manuel Barrientos',
-      ciudad: 'Pudahuel',
-      pais: 'Chile',
-      edad: '24',
-      cuentos: 2,
-      shares: 134,
-      img: 'img/manuelbarrientos.png'
-    },
-    {
-      nombre: 'Juan C. Márquez',
-      ciudad: 'P. Aguirre Cerda',
-      pais: 'Chile',
-      edad: '50',
-      cuentos: 3,
-      shares: 12,
-      img: 'img/juan.png'
-    },
-    {
-      nombre: 'Eli Paniceres',
-      ciudad: 'Montevideo',
-      pais: 'Uruguay',
-      edad: '19',
-      cuentos: 3,
-      shares: 233,
-      img: 'img/eli.png'
-    },
-    {
-      nombre: 'Ian McEwan',
-      ciudad: 'Londres',
-      pais: 'Inglaterra',
-      edad: '56',
-      cuentos: 23,
-      shares: 890,
-      img: 'img/ianmcewan.png'
-    },
-    {
-      nombre: 'Paulo Coehlo',
-      ciudad: 'Rio de Janeiro',
-      pais: 'Brazil',
-      edad: '85',
-      cuentos: 130,
-      shares: 2134,
-      img: 'img/paulocoehlo.png'
-    },        
+  $scope.results_autores = users; 
 
-  ];
   $scope.mas_cuentos = function(result){
     return result.cuentos;
   }
@@ -122,7 +57,119 @@ angular.module('starter.controllers', [])
   }
 
 
-  $scope.results_cuentos = [
+  $scope.results_cuentos = results_cuentos_;
+})
+
+.controller('CuentoCtrl', function($scope, $ionicModal) {
+  $scope.Math = window.Math;
+  $scope.cuento_id = 0;
+  $scope.cuentos = cuentos_;
+
+  $scope.next = function() {
+    $scope.cuento_id++;
+    if( $scope.cuento_id >= $scope.cuentos.length)
+      $scope.cuento_id = 0;
+  };
+
+  $ionicModal.fromTemplateUrl('templates/share.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal;
+  });
+  $scope.openModal = function() {
+    $scope.modal.show();
+  };
+  $scope.closeModal = function() {
+    $scope.modal.hide();
+  };
+  //Cleanup the modal when we're done with it!
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+
+  
+})
+
+.controller('UserCtrl', function($scope, $stateParams) {
+   $scope.user = users[$stateParams.userId];
+   $scope.cuentos = cuentos_;
+});
+
+var users = [
+    {
+      nombre: 'Pablo Neruda',
+      ciudad: 'Isla Negra',
+      pais: 'Chile',
+      edad: '70',
+      cuentos: 45,
+      shares: 1542,
+      img: 'img/pabloneruda.png',
+      id: 0
+    },
+    {
+      nombre: 'Manuel Barrientos',
+      ciudad: 'Pudahuel',
+      pais: 'Chile',
+      edad: '24',
+      cuentos: 2,
+      shares: 134,
+      img: 'img/manuelbarrientos.png',
+      id: 1
+    },
+    {
+      nombre: 'Juan C. Márquez',
+      ciudad: 'P. Aguirre Cerda',
+      pais: 'Chile',
+      edad: '50',
+      cuentos: 3,
+      shares: 12,
+      img: 'img/juan.png',
+      id: 2
+    },
+    {
+      nombre: 'Eli Paniceres',
+      ciudad: 'Montevideo',
+      pais: 'Uruguay',
+      edad: '19',
+      cuentos: 3,
+      shares: 233,
+      img: 'img/eli.png',
+      id: 3
+    },
+    {
+      nombre: 'Ian McEwan',
+      ciudad: 'Londres',
+      pais: 'Inglaterra',
+      edad: '56',
+      cuentos: 23,
+      shares: 890,
+      img: 'img/ianmcewan.png',
+      id: 4
+    },
+    {
+      nombre: 'Paulo Coehlo',
+      ciudad: 'Rio de Janeiro',
+      pais: 'Brazil',
+      edad: '85',
+      cuentos: 130,
+      shares: 2134,
+      img: 'img/paulocoehlo.png',
+      id: 5
+    },        
+    {
+      nombre: 'Tomás Dussaillant',
+      ciudad: 'Santiago',
+      pais: 'Chile',
+      edad: '25',
+      cuentos: 0,
+      shares: 0,
+      img: 'img/tomasdussaillant.png',
+      id: 6
+    }];
+
+
+var results_cuentos_ = [
     { 
       title: 'Escrito hallado en un respaldo de asiento de micro', 
       autor: 'Julio Gutiérrez',
@@ -186,21 +233,10 @@ angular.module('starter.controllers', [])
       dislikes: 4,
       shares: 69,  
       id: 8 
-    }
-  ];
-})
+    }];
 
-.controller('CuentoCtrl', function($scope) {
-  $scope.Math = window.Math;
-  $scope.cuento_id = 0;
 
-  $scope.next = function() {
-    $scope.cuento_id++;
-    if( $scope.cuento_id >= $scope.cuentos.length)
-      $scope.cuento_id = 0;
-  };
-
-  $scope.cuentos = [
+var cuentos_ = [
     { 
       title: 'Holocausto',
       author: 'Hugo Aravena',
@@ -232,9 +268,4 @@ angular.module('starter.controllers', [])
       origin: 'Concepción, Chile',
       date: 'Mayo 2010', 
       id: 4 
-    }
-  ];
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
-});
+    }];

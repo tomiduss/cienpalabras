@@ -5,7 +5,7 @@
 	            <ion-view>
 	                <ion-content >
 	                    <ion-list>
-                    	  	<ion-item class="item item-avatar item-icon-right" ng-repeat="result in results_autores | orderBy:mas_cuentos: true" href="#" href="#">
+                    	  	<ion-item class="item item-avatar item-icon-right" ng-repeat="result in results_autores | orderBy:mas_cuentos : true | limitTo:6" href="#/app/user/{{result.id}}" >
 						        <img src="{{result.img}}">
 						      	<h2>{{result.nombre}}</h2>
 						      	<p>{{result.ciudad+', '+result.pais}}</p>
@@ -19,7 +19,7 @@
 	            <ion-view >
 	                <ion-content >
 	                    <ion-list>
-                    	  	<div class="item item-avatar item-button-right" ng-repeat="result in results_autores | orderBy:most_shares: true" href="#" href="#">
+                    	  	<div class="item item-avatar item-button-right" ng-repeat="result in results_autores | orderBy:most_shares: true | limitTo:6" href="#/app/user/{{result.id}}" >
 						        <img src="{{result.img}}">
 						      	<h2>{{result.nombre}}</h2>
 						      	<p>{{result.ciudad+', '+result.pais}}</p>
