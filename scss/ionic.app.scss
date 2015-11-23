@@ -5,46 +5,180 @@ in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 
 $light:                           #fff !default;
-$stable:                          #f8f8f8 !default;
+$stable:                          #444 !default;
 $positive:                        #387ef5 !default;
 $calm:                            #11c1f3 !default;
 $balanced:                        #33cd5f !default;
 $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
-$dark:                            #444 !default;
+
 */
 
-
-.texto {
-	font-family: Garamond,"Adobe Caslon Pro", "Hoefler Text", Georgia, Times, serif;
-	color: #000;
-	font-size: 20px;
-	line-height: 20px;
-	letter-spacing: 1px;
-}
-
-.titulo {
-	font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
-	color:#4E443C;
-	font-variant: small-caps; text-transform: none; font-weight: 100; margin-bottom: 0;
-
-}
-
-
-
-
-
-
-
-
-
-
-// The path for our ionicons font files, relative to the built CSS in www/css
+$stable:                          #444 !default;
+$dark:                            #111 !default;
 
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
-@import "style"
+@import "style";
 
+
+
+$font-textos:  "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+$font-menu: "Roboto", "Segoe UI", sans-serif;
+
+$base-background-color:           #000 !default;
+$base-color:                      #000 !default;
+
+.black-bg {
+	@extend .ion-content;
+	background-color: #000;
+
+}
+.iconcolor-0 {
+	color: gold;
+}
+.iconcolor-1 {
+	color: silver;
+}
+
+.iconcolor-2 {
+	color: #cd7f32 ;
+}
+
+@mixin alpha-background-color($color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  background-color: $solid-color;
+  background-color: $color;
+}
+
+
+.login {
+	@extend .modal;
+	@include alpha-background-color(rgba(black, 0.8), black);
+
+	&:before {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    -webkit-filter: blur(5px);
+	    filter: blur(5px);
+	    z-index: -1;
+	}
+  	&:after {
+	    content: '';
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 100%;
+	    background: rgba(255,255,255,.5);
+	    z-index: -1;
+	  }
+}
+
+#titulo-login {
+	color:#000;
+	text-align: center;
+	font-size: 28px;
+	font-weight: bold; 
+}
+
+.cuento {
+
+	font-family: $font-textos;
+	color:#4E443C;
+	
+	text-transform: none; 
+	font-weight: 100; 
+	margin-bottom: 0;
+
+
+	.title, h1, h2, h3 {
+		letter-spacing: 2px;
+		font-variant: small-caps;
+		font-size: 22px;
+		font-weight: bold;
+	}
+	.texto {
+
+		color: $light;
+		font-size: 20px;
+		line-height: 20px;
+		letter-spacing: 1px;
+		text-align: justify;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	.autor {
+		margin-top: 10px;
+		font-family: $font-menu;
+		p{
+			color: $light;	
+		}
+		
+	}
+}
+
+.favoritos{
+	.item-button-right{
+		padding-right: 0px;
+	}
+}
+//Profile extraido de http://codepen.io/anon/pen/PPgvVq
+
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+
+.profile-info {
+	color: $light;
+	h2 {
+		color: $light;
+		letter-spacing: 2px;
+		font-variant: small-caps;
+		font-size: 22px;
+		font-weight: bold;
+	}
+	p {
+		color: $light;
+	}
+}
+
+.bio {
+	font-style: italic;
+}
+
+
+
+#profile-name {
+  color: #444;
+  font-size: 26px;
+}
+
+#profile-description {
+  font-size: 15px;
+  color: #888;
+}
+
+#profile-description a {
+  color: #888;
+}
+#cover-img {
+	height: 200px
+}
+
+#profile-image {
+  border-radius: 100px;
+  border: 1px solid #111;
+  width: 128px;
+  height: 128px;
+  
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.7);
+}

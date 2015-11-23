@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
   }).then(function(modal) {
     $scope.modal = modal;
   });
-
+  $scope.user = users[6];
   // Triggered in the login modal to close it
   $scope.closeLogin = function() {
     $scope.modal.hide();
@@ -60,7 +60,7 @@ angular.module('starter.controllers', [])
   $scope.results_cuentos = results_cuentos_;
 })
 
-.controller('CuentoCtrl', function($scope, $ionicModal) {
+.controller('CuentoCtrl', function($scope, $ionicPopup, $timeout) {
   $scope.Math = window.Math;
   $scope.cuento_id = 0;
   $scope.cuentos = cuentos_;
@@ -71,29 +71,52 @@ angular.module('starter.controllers', [])
       $scope.cuento_id = 0;
   };
 
-  $ionicModal.fromTemplateUrl('templates/share.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) {
-    $scope.modal = modal;
-  });
-  $scope.openModal = function() {
-    $scope.modal.show();
-  };
-  $scope.closeModal = function() {
-    $scope.modal.hide();
-  };
-  //Cleanup the modal when we're done with it!
-  $scope.$on('$destroy', function() {
-    $scope.modal.remove();
-  });
 
+
+  $scope.showPopup = function() {
+    
+    var template_ = 'templates/share.html';
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: template_,
+      title: 'Compartir',
+      scope: $scope,
+    });
+    
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 3000);
+
+   };
+  
   
 })
 
-.controller('UserCtrl', function($scope, $stateParams) {
+.controller('UserCtrl', function($scope, $stateParams, $ionicPopup, $timeout) {
    $scope.user = users[$stateParams.userId];
    $scope.cuentos = cuentos_;
+
+   $scope.showPopup = function() {
+    
+    var template_ = 'templates/share.html';
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: template_,
+      title: 'Compartir',
+      scope: $scope,
+    });
+    
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 3000);
+
+   };
 });
 
 var users = [
@@ -104,7 +127,9 @@ var users = [
       edad: '70',
       cuentos: 45,
       shares: 1542,
+      cover: 'img/beach2.jpg',
       img: 'img/pabloneruda.png',
+      bio: '«El más grande poeta del siglo XX en cualquier idioma», según Gabriel García Márquez',
       id: 0
     },
     {
@@ -114,6 +139,7 @@ var users = [
       edad: '24',
       cuentos: 2,
       shares: 134,
+      cover: 'img/cover4.png',
       img: 'img/manuelbarrientos.png',
       id: 1
     },
@@ -124,6 +150,7 @@ var users = [
       edad: '50',
       cuentos: 3,
       shares: 12,
+      cover: 'img/cover4.png',
       img: 'img/juan.png',
       id: 2
     },
@@ -134,6 +161,7 @@ var users = [
       edad: '19',
       cuentos: 3,
       shares: 233,
+      cover: 'img/cover3.png',
       img: 'img/eli.png',
       id: 3
     },
@@ -144,7 +172,9 @@ var users = [
       edad: '56',
       cuentos: 23,
       shares: 890,
+      cover: 'img/beach1.png',
       img: 'img/ianmcewan.png',
+      bio:  'A person is, among all else, a material thing, easily torn and not easily mended.',
       id: 4
     },
     {
@@ -154,6 +184,8 @@ var users = [
       edad: '85',
       cuentos: 130,
       shares: 2134,
+      cover: 'img/cover5.jpg',
+      bio: 'Cuando quieres realmente alguna cosa, todo el Universo conspira para ayudarte a conseguirla',
       img: 'img/paulocoehlo.png',
       id: 5
     },        
@@ -164,6 +196,7 @@ var users = [
       edad: '25',
       cuentos: 0,
       shares: 0,
+      cover: 'img/cover3.png',
       img: 'img/tomasdussaillant.png',
       id: 6
     }];

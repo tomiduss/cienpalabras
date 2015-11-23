@@ -30,7 +30,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
-  })
+  })  
 
   .state('app.search', {
     url: '/search',
@@ -38,6 +38,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       'menuContent': {
         templateUrl: 'templates/search.html',
         controller: 'SearchCtrl'
+      }
+    }
+  })
+    .state('app.config', {
+    url: '/config',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/config.html',
+        controller: 'AppCtrl'
       }
     }
   })
@@ -92,6 +101,15 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/user.html',
+        controller: 'UserCtrl'
+      }
+    }
+  })
+  .state('app.profile', {
+    url: '/profile/:userId',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/profile.html',
         controller: 'UserCtrl'
       }
     }
