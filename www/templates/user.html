@@ -13,11 +13,11 @@
       </ion-nav-buttons>
     </ion-nav-bar>
 
-  <ion-content has-header="true">
+  <ion-content class="user-content" has-header="true">
     
     <div id="content">
       
-	  <ion-list>
+	  <ion-list class="lista-user">
 	  	<div class="item item-image">
 	    	<img id="cover-img" src="{{user.cover}}">
 	  	</div>
@@ -40,10 +40,26 @@
 			    Cuentos
 			    <span class="badge badge-dark">{{user.cuentos}}</span>
 		</div>
-	    <ion-item  ng-repeat="result in cuentos" href="#/app/cuento" ng-show="user.cuentos > 0">         
-	        <h2 class="cuento">{{result.title}}</h2>
+	    <ion-item id="cuentos-user"  ng-repeat="result in cuentos" href="#/app/cuento" ng-show="user.cuentos > 0">         
+	        <h2 class="list-text">{{result.title}}</h2>
 	        <p>{{result.date}}</p>      
-	        
+	        <p>
+	        <div class="buttons row">
+		        <button class="button button-clear col">
+		            <span>{{result.likes}}</span>
+		            <i class="icon ion-thumbsup"></i>
+		        </button>
+		        <button class="button button-clear col">
+		            <span>{{result.dislikes}}</span>
+		            <i class="icon ion-thumbsdown"></i>
+		        </button>
+		        <button class="button button-clear col">
+		            <span>{{result.views}}</span>
+		            <i class="icon ion-eye"></i>
+		        </button>						        
+		    </div>
+	        	
+	        </p>
 	    </ion-item>
 
       </ion-list>

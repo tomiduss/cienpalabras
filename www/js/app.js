@@ -105,15 +105,16 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       }
     }
   })
-  .state('app.profile', {
-    url: '/profile/:userId',
+  .state('app.escribe', {
+    url: '/escribe',
     views: {
       'menuContent': {
-        templateUrl: 'templates/profile.html',
+        templateUrl: 'templates/escribe.html',
         controller: 'UserCtrl'
       }
     }
   })
+
     
 
   // if none of the above states are matched, use this as the fallback

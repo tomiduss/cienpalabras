@@ -16,10 +16,10 @@
 	                <ion-content class="has-subheader">
 	                    <ion-list>
 	                    	<ion-item class="item item-avatar" ng-repeat="result in results_autores" href="#" href="#">
-										      <img src="{{result.img}}">
-										      <h2>{{result.nombre}}</h2>
-										      <p>{{result.ciudad+', '+result.pais}}</p>										      
-										    </ion-item>	
+						      <img src="{{result.img}}">
+						      <h2>{{result.nombre}}</h2>
+						      <p>{{result.ciudad+', '+result.pais}}</p>										      
+						    </ion-item>	
 	                    </ion-list>    
 	                    
 	                </ion-content>
@@ -30,17 +30,17 @@
 	            <ion-view>
 	                <ion-content class="has-subheader">
 	                    <ion-list>     
-											  <div class="item item-button-right"  ng-repeat="result in results_cuentos" href="#">
-											    <h2>{{result.title}}</h2>
-											    <p>{{result.autor}}</p>
-											    <div class="buttons">
-											        <button class="button button-clear">
-											            <i class="icon ion-thumbsup"></i>
-											            <span>{{ 100*(result.likes - result.dislikes)/(result.likes + result.dislikes) | number:0 }}%</span>
-											        </button>						        
-											    </div>
-											  </div>    
-											</ion-list>
+						  <div class="item item-button-right"  ng-repeat="result in results_cuentos" href="#">
+						    <h2 class="list-text">{{result.title}}</h2>
+						    <p>{{result.autor}}</p>
+						    <div class="buttons">
+						        <button class="button button-clear">
+						            <i class="icon ion-thumbsup"></i>
+						            <span>{{ 100*(result.likes - result.dislikes)/(result.likes + result.dislikes) | number:0 }}%</span>
+						        </button>						        
+						    </div>
+						  </div>    
+						</ion-list>
 	                </ion-content>
 	            </ion-view>
 	        </ion-tab>        

@@ -9168,8 +9168,17 @@ a.button {
     .cuento .autor p {
       color: #fff; }
 
-.favoritos .item-button-right {
+.list-text {
+  font-family: "Adobe Caslon Pro", "Hoefler Text", Georgia, Garamond, Times, serif;
+  font-weight: bold;
+  color: #000; }
+
+.favoritos .item-button-right, .lista-user .item-button-right {
   padding-right: 0px; }
+
+.user-content {
+  margin-top: -5px;
+  background-color: #000; }
 
 .profile-info {
   color: #fff; }

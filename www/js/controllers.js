@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('SearchCtrl', function($scope) {
+.controller('SearchCtrl', function($scope, $ionicPopup, $timeout) {
 
   $scope.results_autores = users; 
 
@@ -55,6 +55,25 @@ angular.module('starter.controllers', [])
   $scope.most_shares = function(result){
     return result.shares;
   }
+
+  $scope.showPopup = function() {
+    
+    var template_ = 'templates/sort.html';
+    // An elaborate, custom popup
+    var myPopup = $ionicPopup.show({
+      templateUrl: template_,
+      title: 'Compartir',
+      scope: $scope,
+    });
+    
+    myPopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+    $timeout(function() {
+       myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 3000);
+
+   };
 
 
   $scope.results_cuentos = results_cuentos_;
@@ -276,6 +295,9 @@ var cuentos_ = [
       text: 'Una vez abierta la entrada comencé a bajar por las frías escaleras hacia la oscuridad. ¡Cuánto tiempo había pasado! Los líquenes cubrían gran parte de las paredes, la humedad se sentía en el aire. Llegando al primer nivel, iluminé con mi linterna una gran bóveda alargada, una especie de túnel cubierto de hermosos mosaicos. Hubiera pensado que era un sistema de navegación subterránea, pero era tal la claridad del agua que me permitió ver los rieles en el fondo. Esta especie de tren cubría kilómetros y kilómetros, como un torrente sanguíneo de la tierra.',
       origin: 'Cerro Navia',
       date: 'Marzo 2010',
+      likes: 789,
+      dislikes: 17,
+      views: 3998,
       id: 1 
     },
     { 
@@ -283,7 +305,10 @@ var cuentos_ = [
       author: 'Patricia Middleton',
       text: 'Cuando la hechicera se transformó en bruja y la varita fue uslero y el amor odio y el odio indiferencia, bastaron siete años y cinco tragos para que el educado caballero no fuera tan caballero ni educado. Hicieron los intentos de rigor: rezos, terapias, amantes, vudú. Volaron plumas y escobas. Se arrancaron gritos y cabellos, hasta que la sangre llegó al río y a todas partes.',
       origin: 'Linares, Chile',
-      date: 'Enero 2015', 
+      date: 'Enero 2015',
+      likes: 1200,
+      dislikes: 780,
+      views: 9899, 
       id: 2 
     },
     { 
@@ -291,7 +316,10 @@ var cuentos_ = [
       author: 'Ángel Beltrán',
       text: '“Así que Santiago es grande”, señaló él con ironía. \n“¡Ciertamente, inmenso!”, dijo con firmeza la mujer.\n“Entonces nunca nos volveremos a ver”.',
       origin: 'Las Condes, Chile',
-      date: 'Febrero 2012',  
+      date: 'Febrero 2012',
+      likes: 452,
+      dislikes: 65,
+      views: 4526,  
       id: 3 
     },
     { 
@@ -299,6 +327,9 @@ var cuentos_ = [
       author: 'Tito Matamala',
       text: 'Aquel que se creía profesor delante de nosotros se ufanaba de la tecnología de punta, de la tecnología de punta, de la tecnología de punta. Hasta que, desde su puesto de la última fila, Claudio sólo le preguntó qué era eso de la tecnología de punta. Y aquel que se creía profesor agarró un lápiz y trazó en la pizarra una flecha ordinaria con aires de pintura rupestre, se dio vuelta hacia nosotros, indicó con el dedo la punta de su flecha mal dibujada y dijo: “Tecnología de punta es la que va aquí”.',
       origin: 'Concepción, Chile',
-      date: 'Mayo 2010', 
+      date: 'Mayo 2010',
+      likes: 745,
+      dislikes: 234,
+      views: 1562, 
       id: 4 
     }];

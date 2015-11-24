@@ -1,4 +1,18 @@
-<ion-view view-title="Mejores Autores">	
+<ion-view view-title="Mejores Autores">
+  <ion-nav-bar class="bar-dark">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-android-time" ng-click="showPopup()">        	
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
   <div class="tabs-striped">
 	  <ion-tabs class="tabs-icon-left">
 	        <ion-tab title="Más Valorados" icon="ion-thumbsup">
